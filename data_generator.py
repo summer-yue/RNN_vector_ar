@@ -9,8 +9,6 @@ def generate_new_batch(batch_size, y_length, x_length, N, M):
 	decoder_input = []
 	target_output = []
 
-	
-
 	for _ in xrange(N):
 		encoder_input.append(np.zeros([batch_size, x_length+ y_length]))
 	for _ in xrange(M):
@@ -20,11 +18,15 @@ def generate_new_batch(batch_size, y_length, x_length, N, M):
 	for i in xrange(batch_size):
 		alpha = np.random.randn(y_length, y_length)
 		beta = np.random.randn(y_length, x_length)
+		print ("ALPHA:")
 		print alpha
+		print ("BETA:")
 		print beta
 		x_0 = generate_x_vector(x_length)
 		y_0 = np.dot(beta, x_0)[0]
+		print ("x_0:")
 		print x_0
+		print ("y_0:")
 		print y_0
 		encoder_input[0][i, :x_length] = x_0
 		encoder_input[0][i, -y_length:] = y_0
@@ -42,8 +44,12 @@ def generate_new_batch(batch_size, y_length, x_length, N, M):
 	return encoder_input, decoder_input, target_output
 
 if __name__ == "__main__":
+	print("batch_size:2, y_length:1, x_length:3, N:5, M:3")
 	e, d, t = generate_new_batch(2,1, 3, 5, 3)
+	print("e:")
 	print e
+	print("d:")
 	print d
+	print("t:")
 	print t
 
