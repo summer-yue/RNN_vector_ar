@@ -18,16 +18,8 @@ def generate_new_batch(batch_size, y_length, x_length, N, M):
 	for i in xrange(batch_size):
 		alpha = np.random.randn(y_length, y_length)
 		beta = np.random.randn(y_length, x_length)
-		print ("ALPHA:")
-		print alpha
-		print ("BETA:")
-		print beta
 		x_0 = generate_x_vector(x_length)
 		y_0 = np.dot(beta, x_0)[0]
-		print ("x_0:")
-		print x_0
-		print ("y_0:")
-		print y_0
 		encoder_input[0][i, :x_length] = x_0
 		encoder_input[0][i, -y_length:] = y_0
 		for j in xrange(1,N):
