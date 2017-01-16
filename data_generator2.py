@@ -1,4 +1,8 @@
 
+#Generating lists of Xs and Ys with variable length N 
+#y = alpha * x + beta
+#We'll be generating a and b randomly within the program
+
 import numpy as np
 
 def generate_x_vector(x_length):
@@ -34,15 +38,19 @@ def generate_new_batch(batch_size, y_length, x_length, N, M):
 			decoder_input[j][i] = x_j
 			target_output[j][i] = np.dot(alpha, target_output[j-1][i]) + np.dot(beta, x_j)
 
-	return encoder_input, decoder_input, target_output
+	return encoder_input, decoder_input, target_output, alpha, beta
 
 if __name__ == "__main__":
 	print("batch_size:2, y_length:1, x_length:3, N:5, M:3")
-	e, d, t = generate_new_batch(2,1, 3, 5, 3)
+	e, d, t, alpha, beta = generate_new_batch(2,1, 3, 5, 3)
 	print("e:")
 	print e
 	print("d:")
 	print d
 	print("t:")
 	print t
+	print("alpha:")
+	print alpha
+	print("beta:")
+	print beta
 
